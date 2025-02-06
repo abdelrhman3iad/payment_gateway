@@ -1,10 +1,18 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Course;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $courses = Course::all();
+    return view('home',get_defined_vars());
+})->name('home');
+
+//Courses
+Route::controller(CourseController::class)->group(function (){
+    Route::get('courses/{course:slug}','show')->name('courses.show');
 });
 
 Route::get('/dashboard', function () {
@@ -17,4 +25,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
