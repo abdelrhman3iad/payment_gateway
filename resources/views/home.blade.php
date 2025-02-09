@@ -13,7 +13,7 @@
                     <a href="{{route('courses.show',$course)}}">
                     <h5>{{$course->name}}</h5>
                     </a>
-                    <p class="underline">{{$course->description}}</p>
+                    <p >{{$course->description}}</p>
                     <p>{{$course->price}}</p>
                     <a class="btn btn-sm btn-primary" href="#">Add to cart</a>
                 </div>
